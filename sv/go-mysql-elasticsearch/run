@@ -5,4 +5,4 @@
 source /etc/envvars
 
 exec 2>&1
-exec go-mysql-elasticsearch
+exec go-mysql-elasticsearch -config=/etc/river.toml
