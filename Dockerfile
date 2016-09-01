@@ -29,8 +29,7 @@ ENV GOPATH /go
 RUN mkdir -p /go/src/app /go/bin && chmod -R 777 /go
 
 RUN apt-get install -y make mysql-client
-RUN go get github.com/tools/godep && \
-    go get github.com/siddontang/go-mysql-elasticsearch || true && \
+RUN go get github.com/siddontang/go-mysql-elasticsearch || true && \
     cd $GOPATH/src/github.com/siddontang/go-mysql-elasticsearch && \
     make && \
     mv bin/go-mysql-elasticsearch /usr/local/bin && \
@@ -38,7 +37,7 @@ RUN go get github.com/tools/godep && \
     rm -rf $GOPATH/src/github.com/siddontang/go-mysql-elasticsearch 
 
 # Add your own river.toml
-#COPY river.toml /etc
+COPY river.toml /etc
 
 # Add runit services
 COPY sv /etc/service 
